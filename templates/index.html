@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The Writer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror/theme/darcula.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class='top-region'><center>
+		<div id="menu-row" class="row menu-row">
+			<div class="dropdown">
+			<button id="file-button">File</button>
+				<div class="dropdown-content-file">
+				<button id="new-file">New File</button>
+				<button id="save-file">Save</button>
+				<button id="save-as">Save As</button>
+				</div>
+			</div>
+			<div class="dropdown"> <!-- Ensure this dropdown is a sibling to the focus dropdown -->
+			  <button id="color-theme-btn">Theme</button>
+			  <div class="dropdown-content-color">
+				<div class"theme-button">
+				<button id="toggle-theme"></button>
+				<!-- Font Selector for UI -->
+				<center>
+					<label for="font-select">Font:</label>
+					<select id="font-select">
+						<!-- Font options will be added dynamically -->
+					</select>
+					</center>
+				</div>
+				<center><label for="theme-select">Theme:</label>
+				  <div class="row top-row">
+				  <select id="theme-select">
+					<option value="default">Default Theme</option>
+					<!-- Options for custom themes will be added dynamically -->
+				  </select>
+				  <button id="rename-theme-btn"></button>
+				  <button id="delete-theme-btn"></button>
+				  <button id="create-theme-btn"></button>
+				  </div></center>
+				 <div class="column color-column">
+					<!-- Background Color -->
+					<div>
+						<label for="bg-color-picker">Background:</label>
+						<span><input type="color" id="bg-color-picker" title="Background Color"></span>
+					</div>
+					<!-- Text Color -->
+					<div>
+						<label for="text-color-picker">Text:</label>
+						<span><input type="color" id="text-color-picker" title="Text Color"></span>
+					</div>
+					<!-- Hover Color -->
+					<div>
+						<label for="hover-color-picker">Hover:</label>
+						<span><input type="color" id="hover-color-picker" title="Hover Color"></span>
+					</div>
+					<!-- Editor Background Color -->
+					<div>
+						<label for="editor-bg-color-picker">Editor Background:</label>
+						<span><input type="color" id="editor-bg-color-picker" title="Editor Background Color"></span>
+					</div>
+					<!-- Editor Text Color -->
+					<div>
+						<label for="editor-text-color-picker">Editor Text:</label>
+						<span><input type="color" id="editor-text-color-picker" title="Editor Text Color" ></span>
+					</div>
+					<!-- Editor Text Dimming Text Color -->
+					<div>
+						<label for="editor-text-dimming-color-picker">Dimmed Text:</label>
+						<span><input type="color" id="editor-text-color-dimming-picker" title=" Dimmed Text Color" ></span>
+					</div>
+				</div>
+				<div class= "row color-bottom-row">
+					<button id="reset-changes-btn">Reset</button>
+					<button id="apply-theme-btn">Apply</button>
+				</div>
+				</div>
+			</div>
+			<div class="dropdown">
+			<button id="toggle-focus">Focus</button>
+				<div class="dropdown-content-focus">
+				<button id="sentence-button">Sentence</button>
+				<button id="paragraph-button">Paragraph</button>
+				<button id="none-button">None</button>
+			  </div>
+			</div>
+			<button id="toggle-typewriter">Typewriter</button>
+			<button id="writing-assistant"></button>
+			</div>
+		<div class="row windows-row">
+		</div>
+  </center></div>
+  <div class="container">
+    <div class="row">
+      <div class="column menu-column">
+		<div class="file-explorer-toggle">
+		  <span class="file-explorer-icon">&#11167;</span>
+		</div>
+		<div class="file-explorer-container">
+		  <!-- File explorer UI will be dynamically added here -->
+		</div>
+      </div>
+      <div id="editor-column" class="column editor-column">
+        <div class="editor-container">
+        <textarea id="editor"></textarea>
+		</div>
+      </div>
+	  <div class="column filler-column">
+	  </div>
+  </div>
+  <!-- Dialog Container -->
+    <div id="dialog-container" style="display: none;"></div>
+	<select id="response-history" style="display: none"></select>
+  <script src="https://unpkg.com/compromise"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script src="{{ url_for('static', filename='lib/marked.umd.min.js') }}" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash.debounce@4.0.8/index.min.js"></script>
+  <script src="{{ url_for('static', filename='js/assistant.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/colors.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/menu.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+</html>

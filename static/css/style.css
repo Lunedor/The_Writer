@@ -1,0 +1,934 @@
+:root {
+--bg-color-light:#ffffe8;
+--bg-color-dark:#111;
+--text-color-light:#222;
+--text-color-dark:#fff;
+--hover-color-light:#ccc;
+--hover-color-dark:#444;
+--active-color-light:#e9ecef;
+--active-color-dark:#adb5bd;
+--editor-bg-color-light:#ffe;
+--editor-bg-color-dark:#222;
+--editor-text-color-light:#000;
+--editor-text-color-dark:#fff;
+--editor-text-color-dimming-light:#E9E9E9;
+--editor-text-color-dimming-dark:#333333;
+}
+
+body {
+margin-left:auto;
+margin-right:auto;
+padding:0;
+overflow:hidden;
+background-color:var(--bg-color-light);
+}
+
+body.dark-theme {
+background-color:var(--bg-color-dark);
+}
+
+.container {
+width:100%;
+max-width:1200px;
+margin:0 auto;
+padding:20px;
+}
+
+.row {
+display:flex;
+}
+
+.column {
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+}
+
+.editor-column {
+position:relative;
+z-index: 1;
+flex:1;
+}
+
+.filler-column {
+top:0;
+right:0;
+display:flex;
+flex:1;
+flex-direction:column;
+}
+
+.editor-container {
+position:relative;
+z-index:1;
+margin-left:auto;
+margin-right:auto;
+width:800px;
+height:800px;
+overflow:hidden;
+}
+
+::-webkit-scrollbar {
+width:10px;
+}
+
+::-webkit-scrollbar-track {
+-webkit-box-shadow:none;
+}
+
+::-webkit-scrollbar-thumb {
+background:#ddd;
+-webkit-box-shadow:none;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+background:#333;
+-webkit-box-shadow:none;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+background:none;
+}
+
+.CodeMirror {
+position:relative;
+z-index: 1;
+border-radius:.2rem;
+transition:background-color .5s ease;
+width:800px!important;
+height:600px!important;
+border-top-right-radius:.5em;
+border-top-left-radius:.5em;
+background-color:var(--editor-bg-color-light);
+}
+
+.CodeMirror-scroll {
+position:relative;
+z-index: 1;
+border-radius:.2rem;
+min-height:700px;
+border-top-right-radius:.5em;
+border-top-left-radius:.5em;
+}
+
+.editor .CodeMirror {
+position:absolute;
+height:600px;
+}
+
+/* Dim the lines of text */
+.focus-mode-active .CodeMirror-line {
+
+color:var(--editor-text-color-dimming-light)!important;
+}
+
+.focus-mode-active .CodeMirror-line .active-sentence {
+color:var(--editor-text-color-light)!important;
+}
+
+/* Dim the lines of text */
+.dark-theme .focus-mode-active .CodeMirror-line {
+color:var(--editor-text-color-dimming-dark)!important;
+}
+
+.dark-theme .focus-mode-active .CodeMirror-line .active-sentence {
+color:var(--editor-text-color-dark)!important;
+}
+
+.editor-toolbar {
+position:sticky;
+top:0;
+left:0;
+z-index:10;
+background-color:var(--editor-bg-color-light);
+margin-left:1px;
+margin-right:1px;
+box-shadow:0 2px 4px rgba(0,0,0,0.5);
+border-top-right-radius:.5em;
+border-top-left-radius:.5em;
+overflow:hidden;
+align-items:center;
+text-align:center;
+border:none;
+transition:opacity .5s ease-out;
+transition-delay:2s;
+opacity:0;
+}
+
+.editor-toolbar:hover {
+transition-delay:0s;
+opacity:1;
+}
+
+.dark-theme .editor-toolbar {
+background-color:var(--editor-bg-color-dark);
+color:var(--editor-text-color-dark);
+}
+
+.dark-theme .CodeMirror {
+background-color:var(--editor-bg-color-dark);
+/* Darcula background */
+color:var(--editor-text-color-dark);
+}
+
+.dark-theme .editor-preview {
+background-color:var(--editor-bg-color-dark);
+/* Darcula background */
+color:var(--editor-text-color-dark);
+border-color:#222;
+}
+
+.dark-theme .editor-toolbar button {
+color:#777;
+}
+
+.CodeMirror-cursor {
+border-left:1px solid #000;
+/* Replace #yourColor with your desired color */
+}
+
+.dark-theme .CodeMirror-cursor {
+border-left:1px solid #fff;
+/* Replace #yourColor with your desired color */
+}
+
+.editor-preview {
+height:602px!important;
+border-top-right-radius:.5em;
+border-bottom-right-radius:.5em;
+border-width:2px;
+border-color:#F0F0F0;
+}
+
+/* Max height in fullscreen mode */
+.fullscreen .CodeMirror {
+max-height:610px;
+/* Example: 80% of the viewport height */
+}
+  
+/* Target the EasyMDE status bar */
+.editor-statusbar {
+margin-right:18px;
+min-width:600px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+text-align:center;
+color: var(--editor-text-color-light);
+display: none;
+}
+
+.dark-theme .editor-statusbar {
+color: var(--editor-text-color-dark);
+}
+
+.editor-statusbar.show {
+display: flex;
+}
+
+/* Ensure the custom filename spans the full width to push other items to the right */
+.current-filename {
+flex-grow:0;
+}
+
+.is-fullscreen .top-region {
+    display: none;
+}
+
+.CodeMirror-fullscreen {
+top:0!important;
+margin-top: 50px;
+position:fixed;
+/* Position fixed to cover the entire screen */
+min-width:100vw!important;
+/* Full viewport width */
+height:auto!important;
+overflow:hidden;
+/* Hide overflow */
+}
+
+/* Optional: Adjust the toolbar and the editor inside the fullscreen mode */
+.editor-toolbar.fullscreen {
+top:0!important;
+width:100vw;
+/* Full width */
+position:fixed;
+/* Adjust if needed */
+box-shadow:0 2px 4px rgba(0,0,0,0.5);
+align-items:center;
+text-align:center;
+border:none;
+transition:opacity .5s ease-out;
+/* Adjust the duration as needed */
+transition-delay:2s;
+opacity:0;
+}
+
+.editor-toolbar.fullscreen:hover {
+transition-delay:0s;
+opacity:1!important;
+}
+
+.EasyMDEContainer .CodeMirror {
+border:none;
+}
+
+.windows-row {
+position:absolute;
+top:0px;
+right:5px;
+flex-direction:row;
+padding-right:0;
+}
+
+.top-row {
+	margin-left: 5px;
+}
+
+#font-select {
+	margin-left: 0px;
+	height: 30px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	min-width: 210px;
+	border-radius: 5px;
+}
+
+.top-region {
+position:relative;
+z-index:1000;
+opacity:0;
+top:0;
+align-items:center;
+text-align:center;
+display:flex;
+background:transparent;
+height:30px;
+margin-top:0;
+padding-bottom:5px;
+-webkit-box-shadow:0 6px 4px -4px #000;
+-moz-box-shadow:0 6px 4px -4px #000;
+box-shadow:0 6px 4px -4px #000;
+transition:opacity .5s ease-out;
+/* Adjust the duration as needed */
+transition-delay:2s;
+}
+
+.top-region:hover {
+transition-delay:0s;
+opacity:1;
+}
+
+/* Menu Styles */
+.menu-column {
+top:0;
+left:0;
+padding-right:20px;
+display:flex;
+flex:1;
+background-color:var(--bg-color-light);
+flex-direction:column;
+opacity:0;
+}
+
+.menu-column:hover {
+opacity:1;
+}
+
+.menu-column.show {
+opacity:1;
+pointer-events:auto;
+/* Allow clicking/hovering */
+}
+
+.menu-row{
+margin-left: 20px;
+}
+
+.menu-row button {
+border:none;
+background-color:transparent;
+color:var(--text-color-light);
+font-size:14px;
+height:20px;
+border-radius:5px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.menu-row button.inactive-mode {
+opacity:0.5;
+}
+
+.dark-theme .menu-row button {
+color:var(--text-color-dark);
+}
+
+.menu-row button:hover {
+background-color:var(--hover-color-light);
+}
+
+.dark-theme .menu-row button:hover {
+background-color:var(--hover-color-dark);
+}
+
+.file-explorer-toggle {
+width:180px;
+display:flex;
+justify-content:center;
+cursor:pointer;
+color:var(--text-color-light);
+box-shadow:0 4px 6px rgba(0,0,0,0.5);
+border-radius:4px 15px 4px 4px;
+height:30px;
+}
+
+.file-explorer-icon {
+margin:auto;
+}
+
+/* File Explorer Styles */
+.file-explorer-container {
+margin-top:4px;
+width:180px;
+max-height:500px;
+overflow-y:auto;
+box-shadow:0 4px 6px rgba(0,0,0,0.5);
+border-radius:4px 4px 4px 15px;
+display:none;
+}
+
+.file-explorer-container.show {
+display:block;
+}
+
+.file-explorer-container .folder,.file-explorer-container .file-item {
+display:flex;
+cursor:pointer;
+border-radius:4px;
+flex-direction:column;
+color:var(--text-color-light);
+}
+
+.file-explorer-container .folder.active,.file-explorer-container .file-item.active {
+background-color:#e9ecef;
+color:var(--text-color-light);
+}
+
+.dark-theme .file-explorer-container .folder.active,.file-explorer-container .file-item.active {
+color:var(--text-color-dark);
+}
+
+/* Button Styles */
+.add-folder-btn,.remove-folder-btn {
+cursor:pointer;
+background:transparent;
+border:none;
+color:var(--text-color-light);
+display:inline-block;
+/* or inline */
+vertical-align:middle;
+margin-left:auto;
+font-size:16px;
+}
+
+.dark-theme .add-folder-btn,.dark-theme .remove-folder-btn {
+color:var(--text-color-dark);
+}
+
+.add-folder-btn {
+margin-top:25px;
+margin-bottom:10px;
+font-size:12px;
+}
+
+.remove-folder-btn:hover {
+opacity:1;
+}
+
+/* Dark Theme Styles */
+.dark-theme {
+background-color:var(--bg-color-dark);
+color:var(--text-color-light);
+}
+
+.dark-theme .menu-column {
+background-color:var(--bg-color-dark);
+}
+
+.dark-theme .file-explorer-toggle {
+color:var(--text-color-dark);
+}
+
+.dark-theme .file-explorer-container {
+background-color:var(--bg-color-dark);
+box-shadow:0 2px 4px rgba(0,0,0,0.3);
+}
+
+.dark-theme .file-explorer-container .folder.active,.dark-theme .file-explorer-container .file-item.active {
+background-color:#adb5bd;
+}
+
+.folder-entry {
+display:flex;
+flex-direction:column;
+border-radius:0 0 4px 4px;
+box-shadow:0 2px 4px rgba(0,0,0,0.5);
+}
+
+.folder-name {
+padding:4px;
+cursor:pointer;
+font-size:14px;
+color:var(--text-color-light);
+}
+
+.dark-theme .folder-name {
+color:var(--text-color-dark);
+}
+
+.folder-name:before {
+content:"\1F5C0";
+margin-right:6px;
+font-size:20px;
+}
+
+.file-name {
+padding:5px;
+border-radius:0 0 4px 4px;
+box-shadow:0 2px 4px rgba(0,0,0,0.5);
+font-size:13px;
+color:var(--text-color-light);
+}
+
+.dark-theme .file-name {
+color:var(--text-color-dark);
+}
+
+.file-name:before {
+content:"\2630";
+margin-right:6px;
+}
+
+.headers-list-container {
+padding:4px;
+border-radius:0 0 4px 4px;
+box-shadow:0 2px 4px rgba(0,0,0,0.5);
+background-color:var(--editor-bg-color-light);
+}
+
+.dark-theme .headers-list-container {
+background-color:var(--editor-bg-color-dark);
+}
+
+.headers-list {
+padding-left:5px;
+overflow-y:auto;
+max-height:200px;
+/* Adjust as needed */
+max-width:200px;
+font-size:10px;
+/*scrollbar-width:thin;*/
+}
+
+.header-item {
+cursor:pointer;
+font-size:10px;
+color:var(--text-color-light);
+}
+
+.dark-theme .header-item {
+cursor:pointer;
+font-size:10px;
+color:var(--text-color-dark);
+}
+
+.header-item:before {
+content:"\23F5";
+margin-right:6px;
+}
+
+.file-item {
+padding-top:5px;
+padding-left:0;
+}
+
+.folder-name-container {
+display:flex;
+width:100%;
+}
+
+.dark-theme .file-explorer-container {
+color:var(--text-color-dark);
+}
+
+.is-fullscreen .menu-column {
+	display: none;
+}
+
+.is-fullscreen .container{
+	background-color: var(--editor-bg-color-light);
+}
+
+.dark-theme.is-fullscreen .container{
+	background-color: var(--editor-bg-color-dark);
+}
+
+.file-explorer-container ul {
+margin-top:0;
+padding-left:10px;
+/* Adjust the value as per your requirement */
+}
+
+.dropbtn {
+background-color:var(--bg-color-light);
+color:var(--text-color-light);
+padding:16px;
+font-size:16px;
+border:none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+position:relative;
+display:inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content-focus {
+display:none;
+position:absolute;
+width: max-content;
+box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);
+z-index:1000;
+padding:5px;
+margin-top:10px;
+border-radius: 2px 2px 10px 10px;
+background-color:var(--bg-color-light);
+text-align: left;
+}
+
+#sentence-button:before {
+	content: "[ ]";
+	margin-right: 5px;
+}
+
+#paragraph-button:before {
+	content: "# ";
+	margin-right: 5px;
+}
+
+#none-button:before {
+	content: "X ";
+	margin-right: 5px;
+}
+
+.dark-theme .dropdown-content-focus {
+background-color:var(--bg-color-dark);
+}
+
+.dropdown-content-focus.show {
+	display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown-content-focus button {
+padding:auto;
+text-decoration:none;
+display:block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+background-color:var(--hover-color-light);
+}
+
+.dark-theme .dropdown:hover .dropbtn {
+background-color:var(--hover-color-dark);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content-color {
+display:none;
+position:absolute;
+min-width:200px;
+box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);
+z-index:1000;
+border-radius:10px;
+text-align:left;
+font-size:12px;
+border-radius:2px 2px 10px 10px;
+background-color:var(--bg-color-light);
+color:var(--text-color-light);
+}
+
+.dark-theme .dropdown-content-color {
+background-color:var(--bg-color-dark);
+color:var(--text-color-dark);
+}
+
+/* Links inside the dropdown */
+.dropdown-content-color button {
+margin:auto;
+margin-top:10px;
+margin-bottom:10px;
+text-decoration:none;
+display:block;
+background-color:rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.dark-theme .dropdown-content-color button {
+background-color:rgba(255,255,255,0.1);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown-content-color.show {
+display:block;
+}
+
+/* Adjust the width of color pickers if needed */
+.dropdown-content-color input[type="color"] {
+border:none;
+background:none;
+cursor:pointer;
+-webkit-appearance:none;
+appearance:none;
+height:20px;
+width:20px;
+}
+
+/* Optional: Style to remove the color picker's default white border in some browsers */
+.dropdown-content-color input[type="color"]::-webkit-color-swatch-wrapper {
+padding:0;
+}
+
+.dropdown-content-color input[type="color"]::-webkit-color-swatch {
+border:none;
+}
+
+.color-column div {
+margin:5px;
+padding:5px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+text-align:center;
+width:200px;
+background-color:rgba(0,0,0,0.2);
+border-radius:5px;
+cursor:pointer;
+}
+
+.dark-theme .color-column div {
+background-color:rgba(255,255,255,0.1);
+}
+
+.color-column label {
+margin-right:auto;
+/* Ensures the label is pushed to the left */
+cursor:pointer;
+}
+
+#theme-select {
+margin: auto;
+width: 120px;
+height: 30px;
+border-radius: 5px;
+}
+
+#create-theme-btn:after {
+content:"\002B";
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+padding:0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+border:none;
+border-radius:10px;
+}
+
+.dark-theme input {
+border-color:var(--hover-color-dark);
+}
+
+.dropdown-content-file button {
+padding:auto;
+text-decoration:none;
+display:block;
+}
+
+
+#new-file:before {
+	content: "\1F4C3";
+	margin-right: 5px;
+}
+
+#save-file:before {
+	content: "\1F4BE";
+	margin-right: 5px;
+}
+
+#save-as:before {
+	content: "\1F4BF";
+	margin-right: 5px;
+}
+
+.dropdown-content-file {
+display:none;
+position:absolute;
+width: max-content;
+box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);
+z-index:1000;
+padding:5px;
+margin-top:10px;
+border-radius: 2px 2px 10px 10px;
+background-color:var(--bg-color-light);
+text-align: left;
+}
+
+.dropdown-content-file.show {
+	display: block;
+}
+
+.dark-theme .dropdown-content-file {
+background-color:var(--bg-color-dark);
+}
+
+#toggle-theme {
+text-align:center;
+width:200px;
+height:40px;
+}
+
+#toggle-theme:before {
+content:"let's go to the Darkside..";
+}
+
+.dark-theme #toggle-theme:before {
+content:'come to the Light..';
+}
+
+#rename-theme-btn {
+height:25px;
+width:25px;
+text-align:center;
+font-size: 14px;
+}
+
+#rename-theme-btn:before {
+content:"\270E";
+}
+
+#create-theme-btn {
+height:25px;
+width:25px;
+text-align:center;
+font-size: 18px;
+margin-right: 10px;
+}
+
+#delete-theme-btn {
+height:25px;
+width:25px;
+text-align:center;
+font-size: 14px;
+}
+
+#delete-theme-btn:before {
+content:"\2718";
+}
+
+#dialog-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background: var(--bg-color-light);
+	color: var(--text-color-light);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: none; /* Initially hidden */
+	border-radius: 10px;
+}
+
+.dark-theme #dialog-container {
+    background: var(--bg-color-dark);
+	color: var(--text-color-dark);
+	box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+}
+
+
+#dialog-container.show {
+    display: block; /* Show the dialog */
+}
+
+#ai-response-container {
+	background: var(--bg-color-light);
+	color: var(--text-color-light);
+    margin-top: 20px;
+}
+
+.dark-theme #ai-response-container {
+	background: var(--bg-color-dark);
+	color: var(--text-color-dark);
+}
+
+#ai-response {
+	width: 400px;
+	margin-top: 5px;
+    margin-bottom: 10px;
+	background-color: var(--editor-bg-color-light);
+	color: var(--editor-text-color-light);
+}
+
+.dark-theme #ai-response {
+	background-color: var(--editor-bg-color-dark);
+	color: var(--editor-text-color-dark);
+}
+
+#general-summary {
+	background-color: var(--editor-bg-color-light);
+	color: var(--editor-text-color-light);
+	width: 100%;
+	margin-top: 5px;
+}
+
+.dark-theme #general-summary {
+	background-color: var(--editor-bg-color-dark);
+	color: var(--editor-text-color-dark);
+}
+
+#writing-assistant:before {
+	content: "\270D";
+	font-size: 18px;
+	padding-bottom: 5px;
+}
+
+#dialog-container button{
+	background-color:rgba(255,255,255,0.1);
+	color: var(--text-color-light);
+	padding: 5px;
+	margin: 5px;
+	border-color: var(--bg-color-dark);
+	border-radius: 5px;
+	cursor: pointer;
+}
+#dialog-container div{
+text-align: center;
+font-size: 12px;
+margin: 5px;
+}
+
+.dark-theme #dialog-container button{
+	background-color:rgba(0,0,0,0.1);
+	color: var(--text-color-dark);
+	border-color: var(--bg-color-light);
+}

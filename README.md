@@ -51,7 +51,7 @@ It will open pywebview GUI to use app also you can use it via browser
 
 Open your web browser and navigate to http://localhost:5000
 
-Or you can download .exe file from release and start to app without needing installation.
+*Or you can download .exe file of [alpha release](https://github.com/Lunedor/The_Writer/releases/tag/Alpha) and start to app without needing installation.*
 
 
 ## Keyboard Shortcut List

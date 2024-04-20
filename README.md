@@ -2,6 +2,8 @@
 
 **The Writer** is a powerful markdown editor with a clean and intuitive user interface. It's designed to help writers, authors, and content creators focus on their craft by providing a distraction-free writing environment with useful features.
 
+![image](https://github.com/Lunedor/The_Writer/assets/33136986/eaba3906-649f-4702-8358-38f5ffe1a43d)
+
 
 ## Features
 

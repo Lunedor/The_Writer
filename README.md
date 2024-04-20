@@ -106,10 +106,6 @@ This project is licensed under the MIT License.
 ## Acknowledgments
 **EasyMDE** - A simple, embeddable, and beautiful Markdown editor
 
-**OpenAI API** - Advanced AI models for writing assistance
-
-**Gemini API** - Alternative AI models for writing assistance
-
 **Flask** - The Python web framework powering the backend
 
 **PyWebView** - GUI for your Python program with JavaScript, HTML, and CSS

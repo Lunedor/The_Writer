@@ -41,7 +41,7 @@
 
 To get started with The Writer, follow these steps:
 
-Clone the repository: git clone https://github.com/your-username/the-writer.git
+Clone the repository: git clone https://github.com/Lunedor/the-writer.git
 
 Install the required Python dependencies: pip install -r requirements.txt
 
@@ -50,6 +50,8 @@ Start the Flask development server: python main.py
 It will open pywebview GUI to use app also you can use it via browser
 
 Open your web browser and navigate to http://localhost:5000
+
+Or you can download .exe file from release and start to app without needing installation.
 
 
 ## Keyboard Shortcut List

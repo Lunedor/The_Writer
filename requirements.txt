@@ -1,0 +1,9 @@
+Flask
+webview
+threading
+flask-weasyprint
+docx
+openai
+werkzeug
+google-generativeai
+requests

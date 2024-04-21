@@ -55,6 +55,8 @@ Open your web browser and navigate to http://localhost:5000
 
 *Or you can download .exe file of [alpha release](https://github.com/Lunedor/The_Writer/releases/tag/Alpha) and start to app without needing installation.*
 
+***Please note that the app stores preferences, theme data, folder paths, and API keys in JSON files. Additionally, uploaded images will be saved for serving. The JSON files will be stored in C:\Users\UserName\AppData\Roaming\\.the-writer, and images will be stored in the \images folder in the same directory.***
+
 
 ## Keyboard Shortcut List
 
